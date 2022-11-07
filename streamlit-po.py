@@ -26,6 +26,29 @@ with st.sidebar:
 
 local_css("style.css")
 
+# ---------------- SESSION STATE ----------------
+
+if "button_clicked" not in st.session_state:
+    st.session_state.button_clicked = False
+
+if "button2_clicked" not in st.session_state:
+    st.session_state.button2_clicked = False
+
+if "q_no" not in st.session_state:
+    st.session_state.q_no = 0
+
+if "q_no_temp" not in st.session_state:
+    st.session_state.q_no_temp = 0
+
+
+def callback():
+    st.session_state.button_clicked = True
+
+
+def callback2():
+    st.session_state.button2_clicked = True
+
+
 # ---------------- SIDEBAR ----------------
 
 st.title("Product Owner Interview Questions Flashcards")
@@ -57,21 +80,39 @@ no = len(rows)
 st.write("Currently we have " + str(no) + " questions in the database")
 
 
-# Drawing random question
+# --- main if
 
-# ----- font embedding ----
+if (
+    st.button("Draw question", on_click=callback, key="Draw")
+    or st.session_state.button_clicked
+):
+    # randomly select question number
+    st.session_state.q_no = random.randint(0, no - 1)
+
+    # this if checks if algorithm should use value from temp or new value (temp assigment in else)
+    if st.session_state.button2_clicked:
+        st.markdown(
+            f'<div class="blockquote-wrapper"><div class="blockquote"><h1><span style="color:#ffffff">{rows[st.session_state.q_no_temp].Question}</span></h1><h4>&mdash; Question no. {st.session_state.q_no_temp+1}</em></h4></div></div>',
+            unsafe_allow_html=True,
+        )
+    else:
+        st.markdown(
+            f'<div class="blockquote-wrapper"><div class="blockquote"><h1><span style="color:#ffffff">{rows[st.session_state.q_no].Question}</span></h1><h4>&mdash; Question no. {st.session_state.q_no+1}</em></h4></div></div>',
+            unsafe_allow_html=True,
+        )
+        # keep memory of question number in order to show answer
+        st.session_state.q_no_temp = st.session_state.q_no
+
+    if st.button("Show answer", on_click=callback2, key="Answer"):
+        st.markdown(f"Answer to question number {st.session_state.q_no_temp+1}")
+        st.markdown(
+            f"{rows[st.session_state.q_no_temp].Answer}", unsafe_allow_html=True
+        )
+
+        st.session_state.button2_clicked = False
 
 
-if st.button("Draw question"):
-    no = random.randint(0, no - 1)
-    st.markdown(
-        f'<div class="blockquote-wrapper"><div class="blockquote"><h1><span style="color:#ffffff">{rows[no].Question}</span></h1><h4>&mdash; Question no. {no+1}</em></h4></div></div>',
-        unsafe_allow_html=True,
-    )
-    with st.expander("Show answer"):
-        st.markdown(f"{rows[no].Answer}", unsafe_allow_html=True)
-
-# --- this should be on top
+# --- this should be on top however st.markdown adds divs
 
 st.markdown(
     '<div><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Condensed&family=Cabin&display=swap" rel="stylesheet"></div>',
