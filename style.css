@@ -17,6 +17,7 @@ body {
     position: relative;
     font-family: 'Barlow Condensed', sans-serif;
     max-width: 620px;
+    max-width: 80vw;
     margin: 80px auto;
     align-self: center;
 }

@@ -68,7 +68,8 @@ if st.button("Draw question"):
         f'<div class="blockquote-wrapper"><div class="blockquote"><h1><span style="color:#ffffff">{rows[no].Question}</span></h1><h4>&mdash; Question no. {no+1}</em></h4></div></div>',
         unsafe_allow_html=True,
     )
-    st.markdown(f"{rows[no].Answer}", unsafe_allow_html=True)
+    with st.expander("Show answer"):
+        st.markdown(f"{rows[no].Answer}", unsafe_allow_html=True)
 
 # --- this should be on top
 
