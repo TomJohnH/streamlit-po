@@ -18,7 +18,7 @@ with st.sidebar:
         height=280,
     )
     st.caption("Tomasz Hasiów | e-mail: thasiow@onet.pl")
-    st.write("**Questions sourced from:**")
+    st.write("**Questions and answers sourced from:**")
     st.caption(" 82 Product Owner Interview Questions to Avoid Hiring Imposters")
     st.caption("By Stefan Wolpers | Version 8.01 | 2022-01-17")
     st.caption("https://berlin-product-people.com/")
