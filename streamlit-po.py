@@ -12,15 +12,25 @@ def local_css(file_name):
 # ---------------- SIDEBAR ----------------
 
 with st.sidebar:
-    st.write("**Questions sourced from:**")
-    st.write(" 82 Product Owner Interview Questions to Avoid Hiring Imposters")
-    st.write("By Stefan Wolpers | Version 8.01 | 2022-01-17")
-    st.write("https://berlin-product-people.com/")
     st.write("**Streamlit app created by:**")
     components.html(
         '<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script><div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="hasiow" data-version="v1"></div>',
-        height=310,
+        height=280,
     )
+    st.caption("Tomasz Hasiów | e-mail: thasiow@onet.pl")
+    st.write("**Questions sourced from:**")
+    st.caption(" 82 Product Owner Interview Questions to Avoid Hiring Imposters")
+    st.caption("By Stefan Wolpers | Version 8.01 | 2022-01-17")
+    st.caption("https://berlin-product-people.com/")
+    st.caption(
+        "Download link: https://age-of-product.com/42-scrum-product-owner-interview-questions/"
+    )
+    st.write("Copyright notice:")
+    st.caption(
+        "No part of this publication or its text may be made publicly available or, excepting personal use, reproduced, or distributed or translated into other languages without the prior written permission of Berlin Product People GmbH. If you would like permission to reproduce or otherwise publish any part or all of this publication or its text, including translations thereof, write to us at info@berlin-product-people.com addressed “Attention: Permissions Request.”"
+    )
+    st.caption("Materials in app used with permission of Stefan Wolpers")
+
 
 # ---------------- CSS ----------------
 
