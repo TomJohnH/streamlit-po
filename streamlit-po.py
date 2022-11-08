@@ -3,6 +3,8 @@ from gsheetsdb import connect
 import random
 import streamlit.components.v1 as components
 
+st.set_page_config(page_title="Product Owner Flashcards", page_icon="🚀")
+
 
 def local_css(file_name):
     with open(file_name) as f:
