@@ -1,20 +1,37 @@
-import streamlit as st
-from gsheetsdb import connect
 import random
+
+import streamlit as st
 import streamlit.components.v1 as components
+from gsheetsdb import connect
+
+# -------------- app config ---------------
 
 st.set_page_config(page_title="Product Owner Flashcards", page_icon="🚀")
 
+# ---------------- functions ----------------
 
+# external css
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
+# callbacks
+def callback():
+    st.session_state.button_clicked = True
+
+
+def callback2():
+    st.session_state.button2_clicked = True
 
 
 # ---------------- SIDEBAR ----------------
 
 with st.sidebar:
     st.write("**Streamlit app created by:**")
+
+    # linkedin badge: https://www.linkedin.com/pulse/how-create-linkedin-badge-your-website-amy-wallin/
+
     components.html(
         '<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script><div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="hasiow" data-version="v1"></div>',
         height=280,
@@ -52,25 +69,16 @@ if "q_no" not in st.session_state:
 if "q_no_temp" not in st.session_state:
     st.session_state.q_no_temp = 0
 
-
-def callback():
-    st.session_state.button_clicked = True
-
-
-def callback2():
-    st.session_state.button2_clicked = True
-
-
-# ---------------- SIDEBAR ----------------
+# ---------------- Main page ----------------
 
 st.title("Product Owner Interview Questions Flashcards")
-
 
 # Create a connection object.
 conn = connect()
 
 # Perform SQL query on the Google Sheet.
 # Uses st.cache to only rerun when the query changes or after 10 min.
+# As seen here: https://docs.streamlit.io/knowledge-base/tutorials/databases/public-gsheet
 @st.cache(ttl=600)
 def run_query(query):
     rows = conn.execute(query, headers=1)
@@ -81,7 +89,6 @@ def run_query(query):
 # secrets should be secrtes. shhh don't tell anyone
 sheet_url = st.secrets["public_gsheets_url"]
 
-
 # ok let's run query
 rows = run_query(
     f'SELECT * FROM "{sheet_url}"'
@@ -91,8 +98,7 @@ rows = run_query(
 no = len(rows)
 st.write("Currently we have " + str(no) + " questions in the database")
 
-
-# --- main if
+# ---------------- Questions & answers logic ----------------
 
 if (
     st.button("Draw question", on_click=callback, key="Draw")
@@ -101,7 +107,7 @@ if (
     # randomly select question number
     st.session_state.q_no = random.randint(0, no - 1)
 
-    # this if checks if algorithm should use value from temp or new value (temp assigment in else)
+    # this 'if' checks if algorithm should use value from temp or new value (temp assigment in else)
     if st.session_state.button2_clicked:
         st.markdown(
             f'<div class="blockquote-wrapper"><div class="blockquote"><h1><span style="color:#ffffff">{rows[st.session_state.q_no_temp].Question}</span></h1><h4>&mdash; Question no. {st.session_state.q_no_temp+1}</em></h4></div></div>',
@@ -120,11 +126,9 @@ if (
         st.markdown(
             f"{rows[st.session_state.q_no_temp].Answer}", unsafe_allow_html=True
         )
-
         st.session_state.button2_clicked = False
 
-
-# --- this should be on top however st.markdown adds divs
+# this part normally should be on top however st.markdown always adds divs even it is rendering non visible parts?
 
 st.markdown(
     '<div><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Barlow+Condensed&family=Cabin&display=swap" rel="stylesheet"></div>',
