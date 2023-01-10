@@ -1,8 +1,7 @@
-import random
-
 import streamlit as st
 import streamlit.components.v1 as components
 from gsheetsdb import connect
+import random
 
 # -------------- app config ---------------
 
@@ -89,7 +88,7 @@ def run_query(query):
 # secrets should be secrtes. shhh don't tell anyone
 sheet_url = st.secrets["public_gsheets_url"]
 
-# ok let's run query
+# ok let's run the query
 rows = run_query(
     f'SELECT * FROM "{sheet_url}"'
 )  # f string read more here if you want https://en.wikipedia.org/wiki/Python_(programming_language)#Expressions
