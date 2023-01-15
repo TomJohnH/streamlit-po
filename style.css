@@ -1,6 +1,6 @@
 body {
 
-    background-color: #0e1117;
+    background-color: #1b202c;
 
 }
 
@@ -100,4 +100,17 @@ body {
 
 .blockquote h4:first-letter {
     margin-left: -12px;
+}
+
+.answer {
+    border: 3px solid #202534;
+    /* background-color: #000000; */
+    border-radius: 5px;
+    /* background: linear-gradient(0deg, #030001 0%, #1c0101 50%); */
+    padding: 20px;
+    font-size: 1.25rem;
+}
+
+.answer p {
+    font-size: 1.25rem;
 }

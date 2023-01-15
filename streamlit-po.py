@@ -47,7 +47,7 @@ with st.sidebar:
     st.caption(
         "No part of this publication or its text may be made publicly available or, excepting personal use, reproduced, or distributed or translated into other languages without the prior written permission of Berlin Product People GmbH. If you would like permission to reproduce or otherwise publish any part or all of this publication or its text, including translations thereof, write to us at info@berlin-product-people.com addressed “Attention: Permissions Request.”"
     )
-    st.caption("Materials in app used with permission of Stefan Wolpers")
+    st.caption("Materials in the app used with permission of Stefan Wolpers")
 
 
 # ---------------- CSS ----------------
@@ -121,9 +121,9 @@ if (
         st.session_state.q_no_temp = st.session_state.q_no
 
     if st.button("Show answer", on_click=callback2, key="Answer"):
-        st.markdown(f"Answer to question number {st.session_state.q_no_temp+1}")
         st.markdown(
-            f"{rows[st.session_state.q_no_temp].Answer}", unsafe_allow_html=True
+            f"<div class='answer'><span style='font-weight: bold; color:#6d7284;'>Answer to question number {st.session_state.q_no_temp+1}</span><br><br>{rows[st.session_state.q_no_temp].Answer}</div>",
+            unsafe_allow_html=True,
         )
         st.session_state.button2_clicked = False
 
