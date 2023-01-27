@@ -52,7 +52,7 @@ with st.sidebar:
         f"""
         <div class="bpad" id="bpad">
         <a href="https://www.buymeacoffee.com/tomjohn" style="color: grey; text-decoration:none;">
-        <div style="justify-content: center;margin:0px; border:solid 2px;background-color: #262730; ;border-radius:10px; border-color:#21212f; width: fit-content;padding:0.425rem">
+        <div style="justify-content: center;margin:0px; border:solid 2px;background-color: #0e1117; ;border-radius:10px; border-color:#21212f; width: fit-content;padding:0.425rem">
         <img src="https://raw.githubusercontent.com/TomJohnH/streamlit-game/main/images/coffe.png" style="max-width:20px;margin-right:10px;">
         Buy me a coffee</a></div></div>""",
         unsafe_allow_html=True,
