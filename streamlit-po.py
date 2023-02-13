@@ -87,8 +87,10 @@ conn = connect()
 # Perform SQL query on the Google Sheet.
 # Uses st.cache to only rerun when the query changes or after 10 min.
 # As seen here: https://docs.streamlit.io/knowledge-base/tutorials/databases/public-gsheet
+
+
+# @st.cache_data(ttl=600)
 @st.cache_resource
-# @st.cache_data
 def run_query(query):
     rows = conn.execute(query, headers=1)
     rows = rows.fetchall()
