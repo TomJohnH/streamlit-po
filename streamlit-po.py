@@ -31,12 +31,14 @@ with st.sidebar:
 
     # linkedin badge: https://www.linkedin.com/pulse/how-create-linkedin-badge-your-website-amy-wallin/
 
-    components.html(
-        """<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="hasiow" data-version="v1"></div>""",
-        height=280,
+    # components.html(
+    #     """<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+    #     <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="hasiow" data-version="v1"></div>""",
+    #     height=280,
+    # )
+    st.caption(
+        "Tomasz Hasiów | e-mail: thasiow[at]onet.pl | https://tomjohn.streamlit.app/"
     )
-    st.caption("Tomasz Hasiów | e-mail: thasiow[at]onet.pl")
     st.write("**Questions and answers sourced from:**")
     st.caption(" 82 Product Owner Interview Questions to Avoid Hiring Imposters")
     st.caption("By Stefan Wolpers | Version 8.01 | 2022-01-17")
