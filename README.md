@@ -10,3 +10,8 @@ The app has three main purposes:
 - Help managers with hiring processes and give them inspiration.
 - Increase product owners’ knowledge and inspire them to examine their “product owner conscience.”
 
+## Change log
+
+14.02.2023
+- updated UX
+- added search engine
