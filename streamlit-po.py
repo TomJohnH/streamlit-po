@@ -50,15 +50,15 @@ with st.sidebar:
         "No part of this publication or its text may be made publicly available or, excepting personal use, reproduced, or distributed or translated into other languages without the prior written permission of Berlin Product People GmbH. If you would like permission to reproduce or otherwise publish any part or all of this publication or its text, including translations thereof, write to us at info@berlin-product-people.com addressed “Attention: Permissions Request.”"
     )
     st.caption("Materials in the app used with permission of Stefan Wolpers")
-    st.markdown(
-        f"""
-        <div class="bpad" id="bpad">
-        <a href="https://www.buymeacoffee.com/tomjohn" style="color: grey; text-decoration:none;">
-        <div style="justify-content: center;margin:0px; border:solid 2px;background-color: #0e1117; ;border-radius:10px; border-color:#21212f; width: fit-content;padding:0.425rem">
-        <img src="https://raw.githubusercontent.com/TomJohnH/streamlit-game/main/images/coffe.png" style="max-width:20px;margin-right:10px;">
-        Buy me a coffee</a></div></div>""",
-        unsafe_allow_html=True,
-    )
+    # st.markdown(
+    #     f"""
+    #     <div class="bpad" id="bpad">
+    #     <a href="https://www.buymeacoffee.com/tomjohn" style="color: grey; text-decoration:none;">
+    #     <div style="justify-content: center;margin:0px; border:solid 2px;background-color: #0e1117; ;border-radius:10px; border-color:#21212f; width: fit-content;padding:0.425rem">
+    #     <img src="https://raw.githubusercontent.com/TomJohnH/streamlit-game/main/images/coffe.png" style="max-width:20px;margin-right:10px;">
+    #     Buy me a coffee</a></div></div>""",
+    #     unsafe_allow_html=True,
+    # )
 
 # ---------------- CSS ----------------
 
