@@ -171,9 +171,9 @@ with tab2:
     text_search = st.text_input("Search in titles, questions and answers", value="")
 
     # Filter the dataframe using masks
-    m1 = df["Topic"].str.contains(text_search)
-    m2 = df["Question"].str.contains(text_search)
-    m3 = df["Answer"].str.contains(text_search)
+    m1 = df["Topic"].str.contains(text_search, case=False)
+    m2 = df["Question"].str.contains(text_search, case=False)
+    m3 = df["Answer"].str.contains(text_search, case=False)
     df_search = df[m1 | m2 | m3]
 
     # Another way to show the filtered results
